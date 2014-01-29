@@ -130,7 +130,7 @@
 
 	// Attachments
 	function applyAttachment(){
-		var template = '<div class="comment"><table><tr><td style="width:20%"><strong>TYPE</strong></td><td style="width:20%"><strong>COMM</strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"><a href="req.pdf">MYFILE</a></td>	<td style="width:20%">TIMESTAMP</td></tr> </table></div>';
+		var template = '<div class="comment"><table><tr><td style="width:20%"><strong>TYPE</strong></td><td style="width:20%"><strong>COMM</strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"><a href="files/CQ283-1.pdf">MYFILE</a></td>	<td style="width:20%">TIMESTAMP</td></tr> </table></div>';
 		var d = new Date(); 
 		var content = template.replace('TIMESTAMP', d.format('dd/MM/yyyy h:mm:ss'));
 		content = content.replace('TYPE', $("#attachmentType").val());
@@ -145,7 +145,7 @@
 	}
 
 	function applyCotizacion(){
-		var template = '<div class="comment"><table><tr><td style="width:20%"><strong>Cotizacion</strong></td><td style="width:20%"><strong></strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"><a href="req.pdf">CQ283</a></td>	<td style="width:20%">TIMESTAMP</td></tr> </table></div>';
+		var template = '<div class="comment"><table><tr><td style="width:20%"><strong>Cotizacion</strong></td><td style="width:20%"><strong></strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"><a href="files/CQ283-1.pdf">CQ283</a></td>	<td style="width:20%">TIMESTAMP</td></tr> </table></div>';
 		var d = new Date(); 
 		var content = template.replace('TIMESTAMP', d.format('dd/MM/yyyy h:mm:ss'));
 
@@ -265,7 +265,8 @@
 							<p></p>							
 							<button class="searchButton" onclick="window.location = 'intTicketDetail_new.html'">Agregar Req. Gral.</button>
 							<button class="searchButton" onclick="window.history.back();">Guardar</button>
-							<button class="searchButton" onclick="window.location = 'projectDetailAut.html'">Autorizar</button>
+							<button class="searchButton" onclick="$('#attachmentDlg').dialog('open'); return false;">Cargar Factura</button>
+							<button class="searchButton" onclick="$('#attachmentDlg').dialog('open'); return false;">Cargar Carta de termino</button>
 							<button class="searchButton" onclick="window.history.back();">Cancelar</button>
 							<button class="searchButton" onclick="window.history.back();">Descartar</button>
 							<hr>
@@ -277,7 +278,7 @@
 								<td style="width:250px;">Cotizacion</td>
 								<td><input type="text" value="CQ283" disabled/></td>
 								<td>Estatus</td>
-								<td><input type="text" value="POR AUTORIZAR" disabled/></td>
+								<td><input type="text" value="Cotizacion" disabled/></td>
 							</tr>
 							<tr>
 								<td>Cliente</td>
@@ -525,6 +526,11 @@
 							<tr>
 								<td id="attachmentsContent">
 									<div class="comment"><table><tr><td style="width:20%"><strong>Creación</strong></td><td style="width:20%"><strong>Cedula creada</strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"></td>	<td style="width:20%">12/30/2013 8:00:23 AM</td></tr> </table></div>
+									<div class="comment"><table><tr><td style="width:20%"><strong>Autorizacion</strong></td><td style="width:20%"><strong>Cedula Autorizada</strong></td><td style="width:20%">Rogelio Valadez</td><td style="width:20%"></td><td style="width:20%">12/30/2013 11:22:23 AM</td></tr> </table></div>
+									<div class="comment"><table><tr><td style="width:20%"><strong>Cotizacion</strong></td><td style="width:20%"><strong>Cotizacion enviada</strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"><a href="files/CQ283-1.pdf">CQ283-1</a></td><td style="width:20%">12/30/2013 02:32:11 PM</td></tr> </table></div>
+									<div class="comment"><table><tr><td style="width:20%"><strong>Orden de compra</strong></td><td style="width:20%"><strong>Orden de compra cargada</strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"><a href="files/CQ283-OC.pdf">CQ283-OC</a></td><td style="width:20%">01/09/2014 11:36:44 AM</td></tr> </table></div>
+									<div class="comment"><table><tr><td style="width:20%"><strong>Pedido</strong></td><td style="width:20%"><strong>Pedido creado</strong></td><td style="width:20%">Liliana Diaz</td><td style="width:20%"></td>	<td style="width:20%">01/09/2014 11:36:44 AM</td></tr> </table></div>
+									<div class="comment"><table><tr><td style="width:20%"><strong>Factura</strong></td><td style="width:20%"><strong>Factura recibida</strong></td><td style="width:20%">Angeles Avila</td><td style="width:20%"></td>	<td style="width:20%">01/09/2014 11:36:44 AM</td></tr> </table></div>
 								</td>
 							</tr>
 						</table>
@@ -544,6 +550,9 @@
 							<p>Tipo: <select id="attachmentType" style="width:200px;">
 								<option></option>
 								<option value="Requisicion general">Requisicion general</option>
+								<option value="Orden de compra" selected>Orden de compra</option>
+								<option value="Factura">Factura</option>
+								<option value="Factura">Carta de termino</option>
 							</select></p>
 							<p></p>
 							Comentario
@@ -567,7 +576,8 @@
 							<hr>
 							<button class="searchButton" onclick="window.location = 'intTicketDetail_new.html'">Agregar Req. Gral.</button>
 							<button class="searchButton" onclick="window.history.back();">Guardar</button>
-							<button class="searchButton" onclick="window.location = projectDetailAut.html">Autorizar</button>
+							<button class="searchButton" onclick="$('#attachmentDlg').dialog('open'); return false;">Cargar Factura</button>
+							<button class="searchButton" onclick="$('#attachmentDlg').dialog('open'); return false;">Cargar Carta de termino</button>
 							<button class="searchButton" onclick="window.history.back();">Cancelar</button>
 							<button class="searchButton" onclick="window.history.back();">Descartar</button>
 						</div>
