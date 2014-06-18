@@ -295,6 +295,15 @@
 	function fillSeguimiento(){
 		$("#seguimientoText").val('Por favor cotizar instalacion de cableado y equipo en torre incluyendo equipo especial de proteccion');
 	}
+
+	function credChange(val){
+	if(val == 'c'){
+		$('#rowCredito').hide();
+	}
+	else{
+		$('#rowCredito').show();
+	}
+}
 </script>
 <!--   CONTENT   -->
 			<div id="content" class="container_16 clearfix">
@@ -316,9 +325,9 @@
 
 						<table>
 							<tr>
-								<td style="width:250px;">No.Cedula</td>
+								<td style="width:160px;">No.Cedula</td>
 								<td><input type="text" value="CQ283" disabled/></td>
-								<td>Estatus</td>
+								<td style="width:160px;">Estatus</td>
 								<td><input type="text" value="NUEVA" disabled/></td>
 							</tr>
 							<tr>
@@ -369,11 +378,39 @@
 							</tr>
 							</tr>
 							<tr>
-								<td>Ubucación(es) del Proyecto:</td>
+								<td>Ubicación(es) del Proyecto:</td>
 								<td><input type="text" value="QUERETARO, QRO." disabled=""/></td>
-								<td>Forma de pago:</td>
-								<td><input type="text" value="Contado" disabled=""/></td>
+								<td></td>
+								<td></td>
 								
+							</tr>
+							<tr>
+								<td>Condiciones</td>
+								<td colspan="2"><select name="" id="" style="width:95%;" onchange="credChange($(this).val());">
+									<option value="c">Contado</option>
+									<option value="r" selected="">Credito</option>
+								</select></td>
+							</tr>
+							<tr id="rowCredito">
+								<td>Anticipo</td>
+								<td><input type="text" /></td>
+								<td>Plazo</td>
+								<td><input type="text" /></td>
+							</tr>
+							<tr>
+								<td>Plazo finiquito</td>
+								<td colspan="2"><input type="text" /></td>
+							</tr>
+							<tr>
+								<td>Moneda</td>
+								<td><select name="" id="" style="width:95%;" >
+									<option value="mxn">Pesos</option>
+									<option value="usd">Dolares</option>
+								</select style="width:95%;" ></td>
+								<td>IVA</td>
+								<td ><select name="" id="" style="width:95%;" >
+									<option value="">16%</option>
+								</select></td>
 							</tr>
 							<tr>
 								<td>Tiempo de entrega:</td>
@@ -382,14 +419,16 @@
 								<td><input type="text" value="DDP"/></td>
 							</tr>
 							<tr>
-								<td>TOTAL DEL PROYECTO</td>
-								<td><input type="text" value="25000"  readonly=""/></td>
+								<td>TOTAL DE PRODUCTOS</td>
+								<td><input type="text" value="25000" readonly=""/></td>
 								<td>FIANZA(S)</td>
 								<td><input type="text" value="0"/></td>
 							</tr>
 							<tr>
-								<td>TOTAL DE PRODUCTOS Y SERVICIOS</td>
-								<td><input type="text" value="25000" readonly=""/></td>
+								<td>TOTAL DE SERVICIOS</td>
+								<td><input type="text" value="0"  readonly=""/></td>
+								<td>TOTAL DEL PROYECTO</td>
+								<td><input type="text" value="25000"  readonly=""/></td>
 							</tr>
 						</table>
 <!--   ~ ENCABEZADO CEDULA   -->
